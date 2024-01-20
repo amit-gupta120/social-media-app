@@ -12,24 +12,34 @@ import {
   Outlet,
   RouterProvider,
 } from "react-router-dom";
+import './style.scss';
+import { useContext } from 'react';
+import { DarkModeContext } from './context/darkModeContext.js';
+import { AuthContext } from './context/authContext.js';
 
 
 function App() {
 
-  const currentUser = true;
+
+  const { currentUser } = useContext(AuthContext);
+
+  const { darkMode } = useContext(DarkModeContext)
 
   const Layout = () => {
     return (
-      <div>
+      <div className={`theme-${darkMode ? "dark" : "light"}`} >
         <Navbar />
         <div style={{ display: "flex" }}>
           <LeftBar />
-          <Outlet />
+          <div style={{ flex: 6 }}>
+            <Outlet />
+          </div>
+
           <Rightbar />
 
         </div>
 
-      </div>
+      </div >
     )
   }
 
@@ -75,7 +85,7 @@ function App() {
   ]);
 
   return (
-    <div className="App">
+    <div className="App ">
       {/* <Login /> */}
       {/* <Register /> */}
       <RouterProvider router={router} />
