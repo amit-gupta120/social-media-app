@@ -17,6 +17,11 @@
       display: flex;
       align-items: center;
       gap: 30px;
+
+      @include mobile {
+        gap: 60px;
+      }
+
       span {
         font-size: 20px;
         font-weight: bold;
@@ -31,12 +36,23 @@
         border: 1px solid themed("border");
         width: 500px;
 
+        @include mobile {
+          display: none;
+        }
+
+        @include tablet {
+          width: 200px;
+        }
+
         input {
           border: none;
           width: 200px;
           outline: none;
           background-color: transparent;
           color: themed("textColor");
+          @include mobile {
+            display: none;
+          }
         }
       }
     }
@@ -44,6 +60,9 @@
       display: flex;
       align-items: center;
       gap: 20px;
+      @include mobile {
+        display: none;
+      }
       .user {
         display: flex;
         align-items: center;
